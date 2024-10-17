@@ -1,0 +1,33 @@
+public class Math {
+    // ... (método fatorial já existente)
+
+    public int fibonacciSum(int n) {
+        if (n <= 0) {
+            return 0;
+        } else if (n == 1) {
+            return 1;
+        } else {
+            int fib1 = 0, fib2 = 1, sum = 1;
+            for (int i = 2; i <= n; i++) {
+                int temp = fib2;
+                fib2 = fib1 + fib2;
+                fib1 = temp;
+                sum += fib2;
+            }
+            return sum;
+        }
+    }
+}
+
+public class MathTest {
+    // ... (método testFatorial já existente)
+
+    @Test
+    public void testFibonacciSum() {
+        Math m = new Math();
+        assertEquals(0, m.fibonacciSum(0));
+        assertEquals(1, m.fibonacciSum(1));
+        assertEquals(2, m.fibonacciSum(2));
+        assertEquals(4, m.fibonacciSum(3));
+    }
+}
